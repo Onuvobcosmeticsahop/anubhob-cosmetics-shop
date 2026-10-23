@@ -166,9 +166,171 @@ function closeOrderModal(){
 
 function submitOrder(e){
   e.preventDefault();
+</div>
+
+<!-- ভাসমান WhatsApp বাটন -->
+<a href="https://wa.me/8801640609216?text=হ্যালো,%20আমি%20অনুভব%20কসমেটিকস%20শপ%20থেকে%20পণ্য%20অর্ডার%20করতে%20চাই।" target="_blank" style="position:fixed; bottom:20px; right:20px; background:#25d366; color:white; border-radius:50%; width:55px; height:55px; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:998; text-decoration:none;">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2M12.04 20.16C10.59 20.16 9.17 19.77 7.92 19.03L7.62 18.85L4.5 19.67L5.33 16.63L5.13 16.31C4.33 15.03 3.9 13.5 3.9 11.91C3.9 7.42 7.55 3.77 12.04 3.77C16.53 3.77 20.18 7.42 20.18 11.91C20.18 16.4 16.53 20.16 12.04 20.16M16.5 14.38C16.25 14.25 15.05 13.66 14.83 13.58C14.61 13.5 14.45 13.46 14.29 13.71C14.13 13.96 13.66 14.5 13.52 14.66C13.38 14.83 13.23 14.85 12.98 14.73C12.73 14.61 11.93 14.34 10.98 13.49C10.24 12.83 9.74 12.02 9.6 11.77C9.46 11.52 9.58 11.39 9.71 11.26C9.82 11.15 9.96 10.97 10.08 10.82C10.2 10.68 10.25 10.57 10.33 10.41C10.41 10.24 10.37 10.1 10.31 9.97C10.25 9.85 9.76 8.64 9.55 8.14C9.35 7.66 9.15 7.72 9 7.72C8.86 7.72 8.7 7.71 8.53 7.71C8.37 7.71 8.1 7.77 7.87 8.02C7.65 8.27 7 8.87 7 10.1C7 11.33 7.9 12.51 8.02 12.67C8.15 12.83 9.8 15.38 12.31 16.47C12.91 16.73 13.37 16.88 13.74 17C14.34 17.19 14.88 17.16 15.32 17.1C15.81 17.02 16.82 16.48 17.03 15.89C17.24 15.3 17.24 14.8 17.18 14.7C17.12 14.59 16.96 14.52 16.71 14.38H16.5Z"/>
+  </svg>
+</a>
+
+<!-- পপ-আপ অর্ডার ফর্ম -->
+<div id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); z-index:999; justify-content:center; align-items:center; padding:15px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:12px; width:100%; max-width:420px; padding:20px; box-sizing:border-box; max-height:92vh; overflow-y:auto; font-family:sans-serif;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding-bottom:10px;">
+      <h3 style="margin:0; color:#e83e8c;">অর্ডার কনফার্ম করুন</h3>
+      <span onclick="closeOrderModal()" style="font-size:26px; cursor:pointer; color:#888; font-weight:bold;">&times;</span>
+    </div>
+
+    <!-- পেমেন্ট ও ডেলিভারি তথ্য বক্স -->
+    <div style="background:#fff0f6; border:1px dashed #e83e8c; border-radius:8px; padding:12px; margin:12px 0; font-size:13px; color:#333; line-height:1.5;">
+      <strong style="color:#e83e8c;">পেমেন্ট তথ্য:</strong><br>
+      বিকাশ / রকেট (পার্সোনাল): <b>01640609216</b><br>
+      <span style="color:#c2185b; font-size:12px;">* ক্যাশ অন ডেলিভারিতে অর্ডার কনফার্ম করতে ডেলিভারি চার্জ অগ্রিম পাঠাতে হতে পারে।</span>
+    </div>
+
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <!-- পণ্য নির্বাচন ও পরিমাণ -->
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">নির্বাচিত পণ্য:</label>
+        <input type="text" id="modalProductName" readonly style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; background:#f9f9f9; box-sizing:border-box;">
+      </div>
+
+      <div style="display:flex; gap:10px; margin-bottom:10px;">
+        <div style="flex:1;">
+          <label style="font-size:13px; font-weight:bold;">পরিমাণ (Quantity):</label>
+          <select id="itemQuantity" onchange="calculateTotal()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+            <option value="1">১ টি</option>
+            <option value="2">২ টি</option>
+            <option value="3">৩ টি</option>
+            <option value="4">৪ টি</option>
+            <option value="5">৫ টি</option>
+          </select>
+        </div>
+        <div style="flex:1;">
+          <label style="font-size:13px; font-weight:bold;">ডেলিভারি এরিয়া:</label>
+          <select id="deliveryLocation" onchange="calculateTotal()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+            <option value="80">ঢাকার ভেতরে (৳ ৮০)</option>
+            <option value="150">ঢাকার বাইরে (৳ ১৫০)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px; background:#f1f3f5; padding:10px; border-radius:6px; font-size:14px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span>পণ্যের দাম:</span> <span id="summaryProductPrice">৳ 0</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span>ডেলিভারি চার্জ:</span> <span id="summaryDelivery">৳ 80</span>
+        </div>
+        <hr style="border:0; border-top:1px solid #ccc; margin:6px 0;">
+        <div style="display:flex; justify-content:space-between; font-weight:bold; color:#e83e8c;">
+          <span>সর্বমোট পরিশোধযোগ্য:</span> <span id="summaryTotal">৳ 0</span>
+        </div>
+      </div>
+
+      <!-- শিটে পাঠানোর জন্য হিডেন ইনপুট -->
+      <input type="hidden" id="finalProductString" name="পণ্য">
+      <input type="hidden" id="finalPriceString" name="মূল্য">
+      <input type="hidden" id="finalAddressString" name="ঠিকানা">
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">আপনার নাম *</label>
+        <input type="text" name="কাস্টমারের_নাম" required placeholder="নাম লিখুন" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">মোবাইল নম্বর *</label>
+        <input type="tel" name="মোবাইল_নম্বর" required placeholder="017xxxxxxxx" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">সম্পূর্ণ ঠিকানা *</label>
+        <textarea id="rawAddress" required placeholder="বাসা/রোড, এলাকা, থানা, জেলা" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; height:55px;"></textarea>
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">পেমেন্ট মাধ্যম:</label>
+        <select name="পেমেন্ট_মাধ্যম" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+          <option value="ক্যাশ অন ডেলিভারি">ক্যাশ অন ডেলিভারি</option>
+          <option value="বিকাশ">বিকাশ (Send Money)</option>
+          <option value="রকেট">রকেট (Send Money)</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <label style="font-size:13px; font-weight:bold;">TrxID (টাকা পাঠিয়ে থাকলে):</label>
+        <input type="text" name="TrxID" placeholder="বিকাশ/রকেট ট্রানজেকশন আইডি" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <button type="submit" id="submitBtn" style="width:100%; background:#e83e8c; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; font-size:15px; cursor:pointer;">অর্ডার নিশ্চিত করুন</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>অনুভব কসমেটিকস শপ</p>
+  <p>অর্ডার করতে পছন্দের পণ্য নির্বাচন করুন।</p>
+</footer>
+
+<script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3bz9W3RptpQWG_f7dXizARoOKYrgDOlfBPMtGb4hJVG-JYYW7IVg-mOwkjpMIqoUK/exec";
+
+let baseSinglePrice = 0;
+let currentItemTitle = "";
+
+function filterProducts(){
+  let q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(q) ? 'block' : 'none';
+  });
+}
+
+function order(name, price){
+  currentItemTitle = name;
+  baseSinglePrice = parseInt(price) || 0;
+  
+  document.getElementById('modalProductName').value = name;
+  document.getElementById('itemQuantity').value = "1";
+  document.getElementById('deliveryLocation').value = "80";
+  
+  calculateTotal();
+  document.getElementById('orderModal').style.display = 'flex';
+}
+
+function calculateTotal(){
+  let qty = parseInt(document.getElementById('itemQuantity').value) || 1;
+  let delivery = parseInt(document.getElementById('deliveryLocation').value) || 80;
+  
+  let productTotal = baseSinglePrice * qty;
+  let grandTotal = productTotal + delivery;
+  
+  document.getElementById('summaryProductPrice').innerText = '৳ ' + productTotal;
+  document.getElementById('summaryDelivery').innerText = '৳ ' + delivery;
+  document.getElementById('summaryTotal').innerText = '৳ ' + grandTotal;
+}
+
+function closeOrderModal(){
+  document.getElementById('orderModal').style.display = 'none';
+}
+
+function submitOrder(e){
+  e.preventDefault();
   let btn = document.getElementById('submitBtn');
-  btn.innerText = 'অর্ডার পাঠানো হচ্ছে...';
+  btn.innerText = 'অর্ডার প্রসেস হচ্ছে...';
   btn.disabled = true;
+
+  let qty = document.getElementById('itemQuantity').value;
+  let deliverySelect = document.getElementById('deliveryLocation');
+  let deliveryAreaName = deliverySelect.options[deliverySelect.selectedIndex].text;
+  let deliveryCost = deliverySelect.value;
+  let totalAmount = (baseSinglePrice * parseInt(qty)) + parseInt(deliveryCost);
+
+  // গুগল শিটে পাঠানোর ফরম্যাটিং
+  document.getElementById('finalProductString').value = `${currentItemTitle} (${qty} টি)`;
+  document.getElementById('finalPriceString').value = `৳ ${totalAmount} (পণ্য: ৳${baseSinglePrice * qty} + ডেলিভারি: ৳${deliveryCost})`;
+  document.getElementById('finalAddressString').value = `${document.getElementById('rawAddress').value} [এরিয়া: ${deliveryAreaName}]`;
 
   let form = document.getElementById('orderForm');
   let formData = new URLSearchParams(new FormData(form));
@@ -195,26 +357,6 @@ function submitOrder(e){
 </body>
 </html>
 
-    method: 'POST',
-    body: formData,
-    mode: 'no-cors'
-  })
-  .then(() => {
-    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।');
-    form.reset();
-    closeOrderModal();
-  })
-  .catch(() => {
-    alert('অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
-  })
-  .finally(() => {
-    btn.innerText = 'অর্ডার নিশ্চিত করুন';
-    btn.disabled = false;
-  });
-}
-</script>
-</body>
-</html>
 
     alert('WhatsApp অর্ডার চালু করতে কোডে তোমার WhatsApp নম্বর বসাতে হবে!');
     return;
