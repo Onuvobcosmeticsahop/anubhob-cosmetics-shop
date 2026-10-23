@@ -28,26 +28,17 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 <p>তোমার সৌন্দর্যের বিশ্বস্ত ঠিকানা</p>
 </header>
   
-<!-- অফার ব্যানার -->
-<div style="background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; margin: 15px 12px; border-radius: 12px; padding: 15px; text-align: center; box-shadow: 0 4px 12px rgba(232, 62, 140, 0.2);">
-  <h3 style="font-size: 17px; margin: 0 0 5px 0;">✨ বিশেষ অফার ✨</h3>
-  <p style="font-size: 13px; margin: 0 0 8px 0; opacity: 0.95;">পছন্দের যেকোনো পণ্য অর্ডার করলেই পাচ্ছেন দ্রুত হোম ডেলিভারি!</p>
-  <span style="background: white; color: #e83e8c; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block;">ক্যাশ অন ডেলিভারি প্রযোজ্য</span>
+<!-- ক্যাটাগরি বাটনসমূহ (কমপ্যাক্ট মোবাইল ফ্রেন্ডলি সাইজ) -->
+<div style="display: flex; justify-content: flex-start; gap: 6px; padding: 0 10px 15px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">থ্রি-পিস</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">ব্যাগ</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুতা</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">মেকআপ</button>
 </div>
-<!-- সার্চ বক্স -->
-<div class="search" style="padding: 0 12px 12px;">
-  <input id="search" placeholder="পণ্য খুঁজুন..." onkeyup="filterProducts()" style="width: 100%; padding: 10px 15px; border: 2px solid #f1c2d8; border-radius: 25px; outline: none; font-size: 14px; box-sizing: border-box;">
-</div>
-<!-- ক্যাটাগরি বাটনসমূহ -->
-<div style="display: flex; justify-content: flex-start; gap: 8px; padding: 0 12px 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none;">
-  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">থ্রি-পিস ও জামা</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">লেডিস ব্যাগ</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুতা ও হিল</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">মেকআপ ও বিউটি</button>
-</div>
+
 <script>
 function filterCategory(type, btn) {
   document.querySelectorAll('.cat-btn').forEach(b => {
@@ -58,6 +49,7 @@ function filterCategory(type, btn) {
   btn.style.background = '#e83e8c';
   btn.style.color = 'white';
   btn.style.borderColor = '#e83e8c';
+
   document.querySelectorAll('.card').forEach(card => {
     let text = card.innerText;
     if (type === 'all') {
