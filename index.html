@@ -27,74 +27,21 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 <h1>অনুভব কসমেটিকস শপ 💄</h1>
 <p>তোমার সৌন্দর্যের বিশ্বস্ত ঠিকানা</p>
 </header>
-  
-<!-- ক্যাটাগরি বাটনসমূহ (কমপ্যাক্ট মোবাইল ফ্রেন্ডলি সাইজ) -->
-<div style="display: flex; justify-content: flex-start; gap: 6px; padding: 0 10px 15px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
-  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">থ্রি-পিস</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">ব্যাগ</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুতা</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 11px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">মেকআপ</button>
+<!-- অফার ব্যানার -->
+<div style="background: linear-gradient(135utton onclick="order('মেকআপ কালেকশন',250)">অর্ডার করুন</button>
 </div>
-
-<script>
-function filterCategory(type, btn) {
-  document.querySelectorAll('.cat-btn').forEach(b => {
-    b.style.background = 'white';
-    b.style.color = '#555';
-    b.style.borderColor = '#ffd1e3';
-  });
-  btn.style.background = '#e83e8c';
-  btn.style.color = 'white';
-  btn.style.borderColor = '#e83e8c';
-
-  document.querySelectorAll('.card').forEach(card => {
-    let text = card.innerText;
-    if (type === 'all') {
-      card.style.display = '';
-    } else if (type === 'পোশাক') {
-      card.style.display = (text.includes('থ্রি-পিস') || text.includes('জামা') || text.includes('পোশাক') || text.includes('ড্রেস')) ? '' : 'none';
-    } else if (type === 'ব্যাগ') {
-      card.style.display = (text.includes('ব্যাগ') || text.includes('পার্স')) ? '' : 'none';
-    } else if (type === 'জুতা') {
-      card.style.display = (text.includes('জুতা') || text.includes('হিল') || text.includes('স্যান্ডেল')) ? '' : 'none';
-    } else if (type === 'জুয়েলারি') {
-      card.style.display = (text.includes('চুড়ি') || text.includes('চুড়ি') || text.includes('দুল')) ? '' : 'none';
-    } else if (type === 'স্কিন') {
-      card.style.display = (text.includes('স্কিন') || text.includes('স্পেশাল')) ? '' : 'none';
-    } else if (type === 'মেকআপ') {
-      card.style.display = (text.includes('মেকআপ') || text.includes('বিউটি')) ? '' : 'none';
-    }
-  });
-}
-</script>
-
-<h2>আমাদের পণ্যসমূহ 🛍️</h2>
-
-<div class="products" id="products">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400" alt="মেকআপ">
-<h3>মেকআপ কালেকশন</h3>
-<p class="price">৳ ২৫০</p>
-<button onclick="order('মেকআপ কালেকশন',250)">অর্ডার করুন</button>
-</div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400" alt="স্কিন কেয়ার">
 <h3>স্কিন কেয়ার</h3>
 <p class="price">৳ ৩৫০</p>
 <button onclick="order('স্কিন কেয়ার',350)">অর্ডার করুন</button>
 </div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" alt="বিউটি পণ্য">
 <h3>বিউটি আইটেম</h3>
 <p class="price">৳ ১৫০</p>
 <button onclick="order('বিউটি আইটেম',150)">অর্ডার করুন</button>
 </div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400" alt="কসমেটিকস">
 <h3>স্পেশাল কালেকশন</h3>
