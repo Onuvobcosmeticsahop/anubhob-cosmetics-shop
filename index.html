@@ -82,16 +82,22 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 <p>অনুভব কসমেটিকস শপ</p>
 <p>অর্ডার করতে পছন্দের পণ্য নির্বাচন করুন।</p>
 </footer>
+<script>
+function filterProducts(){
+  let q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(q) ? 'block' : 'none';
+  });
+}
 
-}
-function order(name,price){
-let phone='8801640609216';
-let msg='আমি '+name+' অর্ডার করতে চাই। দাম: ৳'+price;
-if(phone.includes('X')){
-alert('WhatsApp অর্ডার চালু করতে কোডে তোমার WhatsApp নম্বর বসাতে হবে।');
-return;
-}
-window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+function order(name, price){
+  let phone = '8801640609216';
+  let msg = 'আমি ' + name + ' অর্ডার করতে চাই। দাম: ৳' + price;
+  if(phone.includes('X')){
+    alert('WhatsApp অর্ডার চালু করতে কোডে তোমার WhatsApp নম্বর বসাতে হবে!');
+    return;
+  }
+  window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
 }
 </script>
 </body>
