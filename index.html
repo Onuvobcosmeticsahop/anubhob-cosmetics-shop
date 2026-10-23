@@ -77,9 +77,77 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 </div>
 <footer>
 <p>অনুভব কসমেটিকস শপ</p>
-<p>অর্ডার করতে পছন্দের পণ্য নির্বাচন করুন।</p>
+</div>
+
+<!-- পপ-আপ অর্ডার ফর্ম -->
+<div id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; justify-content:center; align-items:center; padding:15px; box-sizing:border-box;">
+  <div style="background:#fff; border-radius:12px; width:100%; max-width:400px; padding:20px; box-sizing:border-box; max-height:90vh; overflow-y:auto; font-family:sans-serif;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding-bottom:10px;">
+      <h3 style="margin:0; color:#e83e8c;">অর্ডার কনফার্ম করুন</h3>
+      <span onclick="closeOrderModal()" style="font-size:24px; cursor:pointer; color:#888;">&times;</span>
+    </div>
+
+    <!-- পেমেন্ট নম্বর বক্স -->
+    <div style="background:#fff0f6; border:1px dashed #e83e8c; border-radius:8px; padding:12px; margin:15px 0; font-size:14px; color:#333;">
+      <strong style="color:#e83e8c;">পেমেন্ট তথ্য:</strong><br>
+      বিকাশ / নগদ (পার্সোনাল): <b>01640609216</b><br>
+      <small style="color:#666;">টাকা পাঠিয়ে নিচের ফর্মে TrxID দিন অথবা ক্যাশ অন ডেলিভারি বেছে নিন।</small>
+    </div>
+
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">নির্বাচিত পণ্য:</label>
+        <input type="text" id="modalProductName" name="পণ্য" readonly style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; background:#f9f9f9; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">মোট মূল্য:</label>
+        <input type="text" id="modalProductPrice" name="মূল্য" readonly style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; background:#f9f9f9; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">আপনার নাম *</label>
+        <input type="text" name="কাস্টমারের_নাম" required placeholder="নাম লিখুন" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">মোবাইল নম্বর *</label>
+        <input type="tel" name="মোবাইল_নম্বর" required placeholder="017xxxxxxxx" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">ডেলিভারি ঠিকানা *</label>
+        <textarea name="ঠিকানা" required placeholder="ঠিকানা লিখুন" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box; height:60px;"></textarea>
+      </div>
+
+      <div style="margin-bottom:10px;">
+        <label style="font-size:13px; font-weight:bold;">পেমেন্ট মাধ্যম:</label>
+        <select name="পেমেন্ট_মাধ্যম" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+          <option value="বিকাশ">বিকাশ (Send Money)</option>
+          <option value="নগদ">নগদ (Send Money)</option>
+          <option value="ক্যাশ অন ডেলিভারি">ক্যাশ অন ডেলিভারি</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <label style="font-size:13px; font-weight:bold;">TrxID (টাকা পাঠিয়ে থাকলে):</label>
+        <input type="text" name="TrxID" placeholder="যেমন: 9J4K8L2P" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px; box-sizing:border-box;">
+      </div>
+
+      <button type="submit" id="submitBtn" style="width:100%; background:#e83e8c; color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; cursor:pointer;">অর্ডার নিশ্চিত করুন</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>অনুভব কসমেটিকস শপ</p>
+  <p>অর্ডার করতে পছন্দের পণ্য নির্বাচন করুন।</p>
 </footer>
+
 <script>
+// ধাপ ২ থেকে কপি করা Web app URL নিচে কোটেশনের ভেতর বসাও
+const GOOGLE_SCRIPT_URL = "এখানে_তোমার_কপি_করা_Web_App_URL_বসাবে";
+
 function filterProducts(){
   let q = document.getElementById('search').value.toLowerCase();
   document.querySelectorAll('.card').forEach(card => {
@@ -88,9 +156,46 @@ function filterProducts(){
 }
 
 function order(name, price){
-  let phone = '8801640609216';
-  let msg = 'আমি ' + name + ' অর্ডার করতে চাই। দাম: ৳' + price;
-  if(phone.includes('X')){
+  document.getElementById('modalProductName').value = name;
+  document.getElementById('modalProductPrice').value = '৳ ' + price;
+  document.getElementById('orderModal').style.display = 'flex';
+}
+
+function closeOrderModal(){
+  document.getElementById('orderModal').style.display = 'none';
+}
+
+function submitOrder(e){
+  e.preventDefault();
+  let btn = document.getElementById('submitBtn');
+  btn.innerText = 'অর্ডার পাঠানো হচ্ছে...';
+  btn.disabled = true;
+
+  let form = document.getElementById('orderForm');
+  let formData = new URLSearchParams(new FormData(form));
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors'
+  })
+  .then(() => {
+    alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।');
+    form.reset();
+    closeOrderModal();
+  })
+  .catch(() => {
+    alert('অর্ডার পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+  })
+  .finally(() => {
+    btn.innerText = 'অর্ডার নিশ্চিত করুন';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
+
     alert('WhatsApp অর্ডার চালু করতে কোডে তোমার WhatsApp নম্বর বসাতে হবে!');
     return;
   }
