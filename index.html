@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অনুভব কসমেটিকস শপ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff7fb;color:#333}
+header{background:#e83e8c;color:white;text-align:center;padding:24px 10px}
+header h1{margin:0;font-size:28px}
+header p{margin-bottom:0}
+.search{padding:15px;text-align:center}
+.search input{width:95%;padding:12px;border:1px solid #ddd;border-radius:20px;font-size:16px}
+h2{text-align:center;color:#d63384}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.card{background:white;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 8px #ddd}
+.card img{width:100%;height:135px;object-fit:cover;border-radius:8px}
+.card h3{font-size:16px}
+.price{color:#e83e8c;font-weight:bold}
+button{background:#e83e8c;color:white;border:0;border-radius:8px;padding:10px;width:100%;font-size:15px}
+footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>অনুভব কসমেটিকস শপ 💄</h1>
+<p>তোমার সৌন্দর্যের বিশ্বস্ত ঠিকানা</p>
+</header>
+
+<div class="search">
+<input id="search" placeholder="পণ্য খুঁজুন..." oninput="filterProducts()">
+</div>
+
+<h2>আমাদের পণ্যসমূহ 🛍️</h2>
+
+<div class="products" id="products">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400" alt="মেকআপ">
+<h3>মেকআপ কালেকশন</h3>
+<p class="price">৳ ২৫০</p>
+<button onclick="order('মেকআপ কালেকশন',250)">অর্ডার করুন</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400" alt="স্কিন কেয়ার">
+<h3>স্কিন কেয়ার</h3>
+<p class="price">৳ ৩৫০</p>
+<button onclick="order('স্কিন কেয়ার',350)">অর্ডার করুন</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" alt="বিউটি পণ্য">
+<h3>বিউটি আইটেম</h3>
+<p class="price">৳ ১৫০</p>
+<button onclick="order('বিউটি আইটেম',150)">অর্ডার করুন</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400" alt="কসমেটিকস">
+<h3>স্পেশাল কালেকশন</h3>
+<p class="price">৳ ২০০</p>
+<button onclick="order('স্পেশাল কালেকশন',200)">অর্ডার করুন</button>
+</div>
+</div>
+
+<footer>
+<p>অনুভব কসমেটিকস শপ</p>
+<p>অর্ডার করতে পছন্দের পণ্য নির্বাচন করুন।</p>
+</footer>
+
+<script>
+function filterProducts(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(q)?'block':'none';
+});
+}
+function order(name,price){
+let phone='8801640609216';
+let msg='আমি '+name+' অর্ডার করতে চাই। দাম: ৳'+price;
+if(phone.includes('X')){
+alert('WhatsApp অর্ডার চালু করতে কোডে তোমার WhatsApp নম্বর বসাতে হবে।');
+return;
+}
+window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
+</body>
+</html>
