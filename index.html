@@ -27,6 +27,7 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 <h1>অনুভব কসমেটিকস শপ 💄</h1>
 <p>তোমার সৌন্দর্যের বিশ্বস্ত ঠিকানা</p>
 </header>
+
 <!-- অফার ব্যানার -->
 <div style="background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; margin: 15px 12px; border-radius: 12px; padding: 15px; text-align: center; box-shadow: 0 4px 12px rgba(232, 62, 140, 0.2);">
   <h3 style="font-size: 16px; margin: 0 0 5px 0;">✨ বিশেষ অফার ✨</h3>
@@ -39,15 +40,15 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
   <input id="search" placeholder="পণ্য খুঁজুন..." onkeyup="filterProducts()" style="width: 100%; padding: 9px 15px; border: 2px solid #f1c2d8; border-radius: 25px; outline: none; font-size: 13px; box-sizing: border-box;">
 </div>
 
-<!-- ক্যাটাগরি বাটনসমূহ (মোবাইল ফ্রেন্ডলি সাইজ) -->
-<div style="display: flex; justify-content: flex-start; gap: 6px; padding: 0 12px 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none;">
-  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">থ্রি-পিস</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">ব্যাগ</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুতা</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; flex-shrink: 0;">মেকআপ</button>
+<!-- ক্যাটাগরি বাটনসমূহ -->
+<div style="display: flex; gap: 8px; padding: 0 12px 15px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">থ্রি-পিস</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">ব্যাগ</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুতা</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0;">মেকআপ</button>
 </div>
 
 <script>
@@ -85,7 +86,7 @@ function filterCategory(type, btn) {
 <h2>আমাদের পণ্যসমূহ 🛍️</h2>
 
 <div class="products" id="products">
-  <!-- মেকআপ কালেকশন -->
+  <!-- ১. মেকআপ কালেকশন -->
   <div class="card">
     <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400" alt="মেকআপ কালেকশন">
     <h3>মেকআপ কালেকশন</h3>
@@ -93,36 +94,48 @@ function filterCategory(type, btn) {
     <button onclick="order('মেকআপ কালেকশন', 250)">অর্ডার করুন</button>
   </div>
 
-<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400" alt="স্কিন কেয়ার">
-<h3>স্কিন কেয়ার</h3>
-<p class="price">৳ ৩৫০</p>
-<button onclick="order('স্কিন কেয়ার',350)">অর্ডার করুন</button>
+  <!-- ২. স্কিন কেয়ার -->
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400" alt="স্কিন কেয়ার">
+    <h3>স্কিন কেয়ার</h3>
+    <p class="price">৳ ৩৫০</p>
+    <button onclick="order('স্কিন কেয়ার', 350)">অর্ডার করুন</button>
+  </div>
+
+  <!-- ৩. বিউটি আইটেম -->
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400" alt="বিউটি আইটেম">
+    <h3>বিউটি আইটেম</h3>
+    <p class="price">৳ ১৫০</p>
+    <button onclick="order('বিউটি আইটেম', 150)">অর্ডার করুন</button>
+  </div>
+
+  <!-- ৪. স্পেশাল কালেকশন -->
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1608248597359-0097a810b1a0?w=400" alt="স্পেশাল কালেকশন">
+    <h3>স্পেশাল কালেকশন</h3>
+    <p class="price">৳ ২০০</p>
+    <button onclick="order('স্পেশাল কালেকশন', 200)">অর্ডার করুন</button>
+  </div>
+
+  <!-- ৫. কাশ্মীরি চুড়ি -->
+  <div class="card">
+    <img src="InShot_20261005_210428627.jpg" alt="কাশ্মীরি চুড়ি">
+    <h3>কাশ্মীরি চুড়ি</h3>
+    <p class="price">৳ ১৯৯ / ডজন</p>
+    <button onclick="order('কাশ্মীরি চুড়ি (১ ডজন)', 199)">অর্ডার করুন</button>
+  </div>
+
+  <!-- ৬. কানের দুল -->
+  <div class="card">
+    <img src="InShot_20261005_205307652.jpg" alt="কানের দুল">
+    <h3>কানের দুল</h3>
+    <p class="price">৳ ১২০ / জোড়া</p>
+    <button onclick="order('কানের দুল (১ জোড়া)', 120)">অর্ডার করুন</button>
+  </div>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400" alt="বিউটি পণ্য">
-<h3>বিউটি আইটেম</h3>
-<p class="price">৳ ১৫০</p>
-<button onclick="order('বিউটি আইটেম',150)">অর্ডার করুন</button>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400" alt="কসমেটিকস">
-<h3>স্পেশাল কালেকশন</h3>
-<p class="price">৳ ২০০</p>
-<button onclick="order('স্পেশাল কালেকশন',200)">অর্ডার করুন</button>
-</div>
-<div class="card">
-  <img src="InShot_20261005_210428627.jpg" alt="কাশ্মীরি চুড়ি">
-  <h3>কাশ্মীরি চুড়ি</h3>
-  <p class="price">৳ ১৯৯ / ডজন</p>
-  <button onclick="order('কাশ্মীরি চুড়ি (১ ডজন)',199)">অর্ডার করুন</button>
-</div>
-<div class="card">
-  <img src="InShot_20261005_205307652.jpg" alt="কানের দুল">
-  <h3>কানের দুল</h3>
-  <p class="price">৳ ১২০ / জোড়া</p>
-  <button onclick="order('কানের দুল (১ জোড়া)',120)">অর্ডার করুন</button>
-</div>
-</div>
+
+
 <!-- ভাসমান WhatsApp বাটন -->
 <a href="https://wa.me/8801640609216?text=%E0%A6%B9%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%8B,%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AD%E0%A6%AC%20%E0%A6%95%E0%A6%B8%E0%A6%AE%E0%A7%87%E0%A6%9F%E0%A6%BF%E0%A6%95%E0%A6%B8%20%E0%A6%B6%E0%A6%AA%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%AA%E0%A6%A3%E0%A7%8D%E0%A6%AF%20%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%A1%E0%A6%BE%E0%A6%B0%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A7%84" target="_blank" style="position:fixed; bottom:20px; right:20px; background:#25d366; color:white; border-radius:50%; width:55px; height:55px; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:9999; text-decoration:none;">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
