@@ -27,7 +27,6 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 <h1>অনুভব কসমেটিকস শপ 💄</h1>
 <p>তোমার সৌন্দর্যের বিশ্বস্ত ঠিকানা</p>
 </header>
-
 <!-- অফার ব্যানার -->
 <div style="background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%); color: white; margin: 15px 12px; border-radius: 12px; padding: 15px; text-align: center; box-shadow: 0 4px 12px rgba(232, 62, 140, 0.2);">
   <h3 style="font-size: 17px; margin: 0 0 5px 0;">✨ বিশেষ অফার ✨</h3>
@@ -41,16 +40,18 @@ footer{text-align:center;background:#333;color:white;padding:20px;margin-top:20p
 </div>
 
 <!-- ক্যাটাগরি বাটনসমূহ -->
-<div style="display: flex; justify-content: center; gap: 8px; padding: 0 12px 15px; overflow-x: auto; white-space: nowrap;">
-  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;">সব</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;">স্কিন কেয়ার</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;">মেকআপ ও বিউটি</button>
-  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;">জুয়েলারি</button>
+<div style="display: flex; justify-content: flex-start; gap: 8px; padding: 0 12px 15px; overflow-x: auto; white-space: nowrap; scrollbar-width: none;">
+  <button type="button" class="cat-btn" onclick="filterCategory('all', this)" style="background: #e83e8c; color: white; border: 1px solid #e83e8c; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">সব</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('পোশাক', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">থ্রি-পিস ও জামা</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('ব্যাগ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">লেডিস ব্যাগ</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুতা', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুতা ও হিল</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('জুয়েলারি', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">জুয়েলারি</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('স্কিন', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">স্কিন কেয়ার</button>
+  <button type="button" class="cat-btn" onclick="filterCategory('মেকআপ', this)" style="background: white; color: #555; border: 1px solid #ffd1e3; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; flex-shrink: 0;">মেকআপ ও বিউটি</button>
 </div>
 
 <script>
 function filterCategory(type, btn) {
-  // বাটনের রঙ পরিবর্তন
   document.querySelectorAll('.cat-btn').forEach(b => {
     b.style.background = 'white';
     b.style.color = '#555';
@@ -60,17 +61,22 @@ function filterCategory(type, btn) {
   btn.style.color = 'white';
   btn.style.borderColor = '#e83e8c';
 
-  // পণ্য ফিল্টারিং
   document.querySelectorAll('.card').forEach(card => {
     let text = card.innerText;
     if (type === 'all') {
       card.style.display = '';
+    } else if (type === 'পোশাক') {
+      card.style.display = (text.includes('থ্রি-পিস') || text.includes('জামা') || text.includes('পোশাক') || text.includes('ড্রেস')) ? '' : 'none';
+    } else if (type === 'ব্যাগ') {
+      card.style.display = (text.includes('ব্যাগ') || text.includes('পার্স')) ? '' : 'none';
+    } else if (type === 'জুতা') {
+      card.style.display = (text.includes('জুতা') || text.includes('হিল') || text.includes('স্যান্ডেল')) ? '' : 'none';
+    } else if (type === 'জুয়েলারি') {
+      card.style.display = (text.includes('চুড়ি') || text.includes('চুড়ি') || text.includes('দুল')) ? '' : 'none';
     } else if (type === 'স্কিন') {
       card.style.display = (text.includes('স্কিন') || text.includes('স্পেশাল')) ? '' : 'none';
     } else if (type === 'মেকআপ') {
       card.style.display = (text.includes('মেকআপ') || text.includes('বিউটি')) ? '' : 'none';
-    } else if (type === 'জুয়েলারি') {
-      card.style.display = (text.includes('চুড়ি') || text.includes('চুড়ি') || text.includes('দুল')) ? '' : 'none';
     }
   });
 }
